@@ -21,4 +21,4 @@ This repo contains the necessary files to reproduce the tables and figures of th
 
 #### Mplus files 
 - The `results_mplus` folder contains Mplus files with results and corresponding syntax.
-    - These files include the results obtained from Mplus (.out files) allow table and figure reproduction without a Mplus license.
+    - These files include the results obtained from Mplus (.out files) allowing table and figure reproduction without an Mplus license.
