@@ -1,0 +1,889 @@
+Mplus VERSION 8.4 (Mac)
+MUTHEN & MUTHEN
+01/25/2022  10:45 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE:
+  DOG_3_ANTI_POP_VLRT_var_lat=0_covariance=0_residuals=fixed_classes=3;
+  DATA:
+  FILE = "DOG_3_ANTI_POP_VLRT_var_lat=0_covariance=0_residuals=fixed_classes=3.dat";
+
+  VARIABLE:
+  NAMES = rid w_age_bel q76_1 q76_2 q77_1 q77_2 q77_3 q67_1 q67_2 q67_3 q67_4 q67_5;
+   MISSING=.;
+   USEVARIABLES = rid w_age_bel
+  q76_1 q76_2 q77_1 q77_2 q77_3
+  q67_1 q67_2 q67_3 q67_4 q67_5
+  ;
+  WEIGHT=w_age_bel;
+  IDVARIABLE IS rid;
+                            CLASSES=c1(
+  3
+  );
+  ANALYSIS:
+  TYPE = MIXTURE;
+  STARTS = 1000 250 0;
+  !lrtstarts = 0 0 600 125;
+  !LRTBOOTSTRAP = 40;
+  STITERATIONS=25;
+               ESTIMATOR = MLR;
+               PROCESSORS = 8;
+  MODEL:
+
+  %OVERALL%
+  !!! dogmatism !!!
+  DOG BY Q77_1 q77_2 Q77_3;
+  !!! antagonism !!!
+  ANTI BY q76_1 q76_2;
+  !!! populism !!!
+  POP BY Q67_1 Q67_2 Q67_3 Q67_4 Q67_5;
+
+
+
+  !!!!!!!!
+  %c1#1%
+  !!!!!!!!
+
+  !!!! Means LV !!!!
+  [POP](MPOP1);
+  [ANTI](MANTI1);
+  [DOG](MDOG1);
+  !!!! Variances LV !!!!
+  POP@0;
+  ANTI@0;
+  DOG@0;
+  !!!! Covariances LV !!!!
+  POP WITH ANTI@0;
+  POP WITH DOG@0;
+  ANTI WITH DOG@0;
+  !!!! Residuals LV !!!!
+  Q77_1(VQ77_1);
+  Q77_2(VQ77_2);
+  Q77_3(VQ77_3);
+  Q76_1(VQ76_1);
+  Q76_2(VQ76_2);
+  Q67_1(VQ67_1);
+  Q67_2(VQ67_2);
+  Q67_3(VQ67_3);
+  Q67_4(VQ67_4);
+  Q67_5(VQ67_5);
+  !!!! Intercepts manifest !!!!
+  [Q77_1@0](intQ77101);
+  [Q77_2@0](intQ77201);
+  [Q77_3@0](intQ77301);
+  [Q76_1@0](intQ76101);
+  [Q76_2@0](intQ76201);
+  [Q67_1@0](intQ67101);
+  [Q67_2@0](intQ67201);
+  [Q67_3@0](intQ67301);
+  [Q67_4@0](intQ67401);
+  [Q67_5@0](intQ67501);
+
+  !!!!!!!!
+  %c1#2%
+  !!!!!!!!
+
+  !!!! Means LV !!!!
+  [POP](MPOP2);
+  [ANTI](MANTI2);
+  [DOG](MDOG2);
+  !!!! Variances LV !!!!
+  POP@0;
+  ANTI@0;
+  DOG@0;
+  !!!! Covariances LV !!!!
+  POP WITH ANTI@0;
+  POP WITH DOG@0;
+  ANTI WITH DOG@0;
+  !!!! Residuals LV !!!!
+  Q77_1(VQ77_1);
+  Q77_2(VQ77_2);
+  Q77_3(VQ77_3);
+  Q76_1(VQ76_1);
+  Q76_2(VQ76_2);
+  Q67_1(VQ67_1);
+  Q67_2(VQ67_2);
+  Q67_3(VQ67_3);
+  Q67_4(VQ67_4);
+  Q67_5(VQ67_5);
+  !!!! Intercepts manifest !!!!
+  [Q77_1@0](intQ77102);
+  [Q77_2@0](intQ77202);
+  [Q77_3@0](intQ77302);
+  [Q76_1@0](intQ76102);
+  [Q76_2@0](intQ76202);
+  [Q67_1@0](intQ67102);
+  [Q67_2@0](intQ67202);
+  [Q67_3@0](intQ67302);
+  [Q67_4@0](intQ67402);
+  [Q67_5@0](intQ67502);
+
+  !!!!!!!!
+  %c1#3%
+  !!!!!!!!
+
+  !!!! Means LV !!!!
+  [POP](MPOP3);
+  [ANTI](MANTI3);
+  [DOG](MDOG3);
+  !!!! Variances LV !!!!
+  POP@0;
+  ANTI@0;
+  DOG@0;
+  !!!! Covariances LV !!!!
+  POP WITH ANTI@0;
+  POP WITH DOG@0;
+  ANTI WITH DOG@0;
+  !!!! Residuals LV !!!!
+  Q77_1(VQ77_1);
+  Q77_2(VQ77_2);
+  Q77_3(VQ77_3);
+  Q76_1(VQ76_1);
+  Q76_2(VQ76_2);
+  Q67_1(VQ67_1);
+  Q67_2(VQ67_2);
+  Q67_3(VQ67_3);
+  Q67_4(VQ67_4);
+  Q67_5(VQ67_5);
+  !!!! Intercepts manifest !!!!
+  [Q77_1@0](intQ77103);
+  [Q77_2@0](intQ77203);
+  [Q77_3@0](intQ77303);
+  [Q76_1@0](intQ76103);
+  [Q76_2@0](intQ76203);
+  [Q67_1@0](intQ67103);
+  [Q67_2@0](intQ67203);
+  [Q67_3@0](intQ67303);
+  [Q67_4@0](intQ67403);
+  [Q67_5@0](intQ67503);
+  OUTPUT:
+  TECH11 TECH14;
+  SAVEDATA:
+  FILE IS data_export_DOG_3_ANTI_POP_VLRT_var_lat=0_covariance=0_residuals=fixed_classes=3.d
+  SAVE=fscores CPROB;
+
+
+
+*** WARNING
+  Input line exceeded 90 characters. Some input may be truncated.
+  FILE IS data_export_DOG_3_ANTI_POP_VLRT_var_lat=0_covariance=0_residuals=fixed_classes=3.da
+*** WARNING in OUTPUT command
+  TECH14 option is not available for TYPE=MIXTURE with weights.
+  Request for TECH14 is ignored.
+   2 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+
+DOG_3_ANTI_POP_VLRT_var_lat=0_covariance=0_residuals=fixed_classes=3;
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        1618
+
+Number of dependent variables                                   10
+Number of independent variables                                  0
+Number of continuous latent variables                            3
+Number of categorical latent variables                           1
+
+Observed dependent variables
+
+  Continuous
+   Q76_1       Q76_2       Q77_1       Q77_2       Q77_3       Q67_1
+   Q67_2       Q67_3       Q67_4       Q67_5
+
+Continuous latent variables
+   DOG         ANTI        POP
+
+Categorical latent variables
+   C1
+
+Variables with special functions
+
+  Weight variable       W_AGE_BE
+  ID variable           RID
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Optimization Specifications for the Quasi-Newton Algorithm for
+Continuous Outcomes
+  Maximum number of iterations                                 100
+  Convergence criterion                                  0.100D-05
+Optimization Specifications for the EM Algorithm
+  Maximum number of iterations                                 500
+  Convergence criteria
+    Loglikelihood change                                 0.100D-06
+    Relative loglikelihood change                        0.100D-06
+    Derivative                                           0.100D-05
+Optimization Specifications for the M step of the EM Algorithm for
+Categorical Latent variables
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-05
+  Basis for M step termination                           ITERATION
+Optimization Specifications for the M step of the EM Algorithm for
+Censored, Binary or Ordered Categorical (Ordinal), Unordered
+Categorical (Nominal) and Count Outcomes
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-05
+  Basis for M step termination                           ITERATION
+  Maximum value for logit thresholds                            15
+  Minimum value for logit thresholds                           -15
+  Minimum expected cell size for chi-square              0.100D-01
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+Optimization algorithm                                         EMA
+Random Starts Specifications
+  Number of initial stage random starts                       1000
+  Number of final stage optimizations                          250
+  Number of initial stage iterations                            25
+  Initial stage convergence criterion                    0.100D+01
+  Random starts scale                                    0.500D+01
+  Random seed for generating random starts                       0
+
+Input data file(s)
+  DOG_3_ANTI_POP_VLRT_var_lat=0_covariance=0_residuals=fixed_classes=3.dat
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns            36
+     Number of y missing data patterns          36
+     Number of u missing data patterns           0
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT FOR Y
+
+
+           Covariance Coverage
+              Q76_1         Q76_2         Q77_1         Q77_2         Q77_3
+              ________      ________      ________      ________      ________
+ Q76_1          0.984
+ Q76_2          0.978         0.985
+ Q77_1          0.974         0.977         0.986
+ Q77_2          0.975         0.977         0.979         0.990
+ Q77_3          0.980         0.982         0.985         0.989         0.996
+ Q67_1          0.979         0.980         0.980         0.984         0.990
+ Q67_2          0.980         0.981         0.981         0.985         0.991
+ Q67_3          0.978         0.980         0.980         0.985         0.990
+ Q67_4          0.976         0.977         0.978         0.981         0.987
+ Q67_5          0.979         0.981         0.980         0.984         0.990
+
+
+           Covariance Coverage
+              Q67_1         Q67_2         Q67_3         Q67_4         Q67_5
+              ________      ________      ________      ________      ________
+ Q67_1          0.993
+ Q67_2          0.990         0.994
+ Q67_3          0.989         0.990         0.993
+ Q67_4          0.985         0.986         0.985         0.989
+ Q67_5          0.988         0.989         0.989         0.985         0.993
+
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     Q76_1                 0.038      -0.183      -2.175    3.27%      -1.181     -0.188     -0.188
+            1592.000       0.991      -0.787       1.799    7.47%       0.806      0.806
+     Q76_2                 0.040      -0.337      -2.283    3.14%      -1.314     -0.344      0.625
+            1594.000       0.978      -0.634       1.595   11.54%       0.625      0.625
+     Q77_1                 0.035      -0.124      -2.117    3.57%      -1.084     -0.052     -0.052
+            1596.000       0.993      -0.876       2.013    3.88%      -0.052      0.981
+     Q77_2                 0.036       0.457      -1.542   11.30%      -0.533     -0.533     -0.533
+            1602.000       1.008      -0.563       2.493    2.37%       0.475      1.484
+     Q77_3                 0.022       0.770      -1.346   20.29%      -1.346     -0.138     -0.138
+            1612.000       1.052       0.559       3.488    0.68%      -0.138      1.071
+     Q67_1                 0.049       0.073      -1.922    4.48%      -0.954      0.014      0.014
+            1607.000       0.991      -0.947       1.949    5.97%       0.014      0.982
+     Q67_2                 0.051       0.002      -2.053    3.73%      -1.043     -0.034     -0.034
+            1609.000       1.001      -0.854       1.985    5.53%      -0.034      0.976
+     Q67_3                 0.055       0.383      -1.676    8.40%      -0.669     -0.669     -0.669
+            1607.000       1.020      -0.534       2.350    3.92%       0.337      1.343
+     Q67_4                 0.061       0.074      -1.888    5.69%      -0.897     -0.897      0.094
+            1600.000       0.985      -0.835       2.077    4.44%       0.094      1.085
+     Q67_5                 0.042       0.366      -1.601   11.58%      -0.563     -0.563     -0.563
+            1606.000       1.022      -0.423       2.550    2.43%       0.474      0.474
+
+RANDOM STARTS RESULTS RANKED FROM THE BEST TO THE WORST LOGLIKELIHOOD VALUES
+
+Final stage loglikelihood values at local maxima, seeds, and initial stage start numbers:
+
+          -21063.207  369602           146
+          -21063.207  237332           661
+          -21063.207  402224           91
+          -21063.207  966603           919
+          -21063.207  84013            598
+          -21063.207  87586            871
+          -21063.207  294811           637
+          -21063.207  971853           402
+          -21063.207  180889           920
+          -21063.207  488125           368
+          -21063.207  153942           31
+          -21063.207  212934           568
+          -21063.207  609185           181
+          -21063.207  922596           456
+          -21063.207  279850           555
+          -21063.207  514326           325
+          -21063.207  699834           723
+          -21063.207  3307             735
+          -21063.207  754100           56
+          -21063.207  188498           258
+          -21063.207  741888           138
+          -21063.207  456213           160
+          -21063.207  939870           655
+          -21063.207  563584           657
+          -21063.207  350608           334
+          -21063.207  179022           687
+          -21063.207  950604           172
+          -21063.207  954354           840
+          -21063.207  805768           879
+          -21063.207  315029           471
+          -21063.207  926283           269
+          -21063.207  462228           298
+          -21063.207  638977           643
+          -21063.207  552272           654
+          -21063.207  360419           356
+          -21063.207  167409           772
+          -21063.207  134830           780
+          -21063.207  202790           198
+          -21063.207  830392           35
+          -21063.207  260953           589
+          -21063.207  562716           300
+          -21063.207  266340           683
+          -21063.207  396614           918
+          -21063.207  453915           975
+          -21063.207  879338           309
+          -21063.207  278692           342
+          -21063.207  317868           740
+          -21063.207  605565           404
+          -21063.207  835767           210
+          -21063.207  937885           426
+          -21063.207  65952            933
+          -21063.207  689529           516
+          -21063.207  231281           542
+          -21063.207  478421           311
+          -21063.207  137888           901
+          -21063.207  345726           461
+          -21063.207  568405           233
+          -21063.207  714455           476
+          -21063.207  39810            966
+          -21063.207  123985           248
+          -21063.207  425929           508
+          -21063.207  794236           127
+          -21063.207  588923           606
+          -21063.207  484501           163
+          -21063.207  327140           678
+          -21063.207  570681           777
+          -21063.207  584397           428
+          -21063.207  495366           964
+          -21063.207  817298           967
+          -21063.207  39136            226
+          -21063.207  425982           485
+          -21063.207  27071            15
+          -21063.207  118421           139
+          -21063.207  67009            564
+          -21063.207  999211           628
+          -21063.207  821011           161
+          -21063.207  22075            659
+          -21063.207  197223           332
+          -21063.207  499347           881
+          -21063.207  228459           947
+          -21063.207  497522           502
+          -21063.207  364676           27
+          -21063.207  804660           260
+          -21063.207  468036           131
+          -21063.207  282464           283
+          -21063.207  92091            649
+          -21063.207  21132            351
+          -21063.207  137377           397
+          -21063.207  238317           812
+          -21063.207  977800           853
+          -21063.207  622290           880
+          -21063.207  70118            104
+          -21063.207  789985           67
+          -21063.207  963053           43
+          -21063.207  939709           112
+          -21063.207  379729           512
+          -21063.207  913639           162
+          -21063.207  91231            727
+          -21063.207  985387           381
+          -21063.207  496344           808
+          -21063.207  748692           204
+          -21063.207  802928           892
+          -21063.207  207917           976
+          -21063.207  378393           509
+          -21063.207  724519           333
+          -21063.207  655497           376
+          -21063.207  775881           778
+          -21063.207  203508           806
+          -21063.207  700270           855
+          -21063.207  208797           931
+          -21063.207  898745           466
+          -21063.207  648555           113
+          -21063.207  246261           38
+          -21063.207  939021           8
+          -21063.207  992389           77
+          -21063.207  59674            240
+          -21063.207  313407           132
+          -21063.207  12477            155
+          -21063.207  435287           623
+          -21063.207  820977           776
+          -21063.207  177175           851
+          -21063.207  988761           475
+          -21063.207  758647           951
+          -21063.207  608496           4
+          -21063.207  479273           156
+          -21063.207  671390           814
+          -21063.207  195353           225
+          -21063.207  117391           710
+          -21063.207  178181           753
+          -21063.207  690596           858
+          -21063.207  238906           430
+          -21063.207  595153           230
+          -21063.207  876056           1000
+          -21063.207  781489           627
+          -21063.207  50983            834
+          -21063.207  462662           872
+          -21063.207  298201           903
+          -21063.207  152496           123
+          -21063.207  413564           535
+          -21063.207  292884           103
+          -21063.207  995249           525
+          -21063.207  220454           288
+          -21063.207  920593           611
+          -21063.207  507218           613
+          -21063.207  474357           789
+          -21063.207  535303           923
+          -21063.207  589483           950
+          -21063.207  226322           478
+          -21063.207  848890           95
+          -21063.207  161421           519
+          -21063.207  415502           194
+          -21063.207  749635           420
+          -21063.207  327475           518
+          -21063.207  476393           705
+          -21063.207  761302           744
+          -21063.207  318177           748
+          -21063.207  502157           799
+          -21063.207  742609           531
+          -21063.207  670281           721
+          -21063.207  777045           377
+          -21063.207  319144           176
+          -21063.207  618000           190
+          -21063.207  914505           838
+          -21063.207  86698            893
+          -21063.207  399671           13
+          -21063.207  78862            529
+          -21063.207  848163           47
+          -21063.207  344422           296
+          -21063.207  602797           336
+          -21063.207  488581           688
+          -21063.207  177936           726
+          -21063.207  80438            246
+          -21063.207  948615           140
+          -21063.207  72662            729
+          -21063.207  544077           809
+          -21063.207  68850            462
+          -21063.207  715561           125
+          -21063.207  314084           81
+          -21063.207  761633           50
+          -21063.207  396795           323
+          -21063.207  501995           791
+          -21063.207  872743           374
+          -21063.207  650354           577
+          -21063.207  646573           741
+          -21063.207  614535           449
+          -21063.207  792993           859
+          -21063.207  960438           116
+          -21063.207  417035           149
+          -21063.207  692169           308
+          -21063.207  284384           600
+          -21097.626  155749           960
+          -21097.626  252346           528
+          -21097.626  276102           599
+          -21097.626  878749           728
+          -21097.626  471040           403
+          -21097.626  857122           889
+          -21097.626  232226           235
+          -21097.626  965994           396
+          -21097.626  737601           891
+          -21097.626  807534           850
+          -21097.626  850545           357
+          -21097.626  299977           956
+          -21097.626  871851           257
+          -21097.626  798821           423
+          -21097.626  781190           219
+          -21097.626  77210            712
+          -21097.626  860029           760
+          -21097.626  663090           906
+          -21097.626  749453           33
+          -21097.626  127362           757
+          -21097.626  863691           481
+          -21097.626  928624           981
+          -21097.626  947714           573
+
+37 perturbed starting value run(s) did not converge.
+
+
+
+THE BEST LOGLIKELIHOOD VALUE HAS BEEN REPLICATED.  RERUN WITH AT LEAST TWICE THE
+RANDOM STARTS TO CHECK THAT THE BEST LOGLIKELIHOOD IS STILL OBTAINED AND REPLICATED.
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       28
+
+Loglikelihood
+
+          H0 Value                      -21063.207
+          H0 Scaling Correction Factor      1.5537
+            for MLR
+
+Information Criteria
+
+          Akaike (AIC)                   42182.414
+          Bayesian (BIC)                 42333.304
+          Sample-Size Adjusted BIC       42244.353
+            (n* = (n + 2) / 24)
+
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASSES
+BASED ON THE ESTIMATED MODEL
+
+    Latent
+   Classes
+
+       1        367.25554          0.22698
+       2        607.06514          0.37519
+       3        643.67931          0.39782
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASSES
+BASED ON ESTIMATED POSTERIOR PROBABILITIES
+
+    Latent
+   Classes
+
+       1        367.25554          0.22698
+       2        607.06514          0.37519
+       3        643.67931          0.39782
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASSES
+BASED ON THEIR MOST LIKELY LATENT CLASS MEMBERSHIP
+
+Class Counts and Proportions
+
+    Latent
+   Classes
+
+       1              360          0.22219
+       2              613          0.37873
+       3              646          0.39908
+
+
+CLASSIFICATION QUALITY
+
+     Entropy                         0.757
+
+
+Classification Probabilities for the Most Likely Latent Class Membership (Column)
+by Latent Class (Row)
+
+           1        2        3
+
+    1   0.883    0.000    0.117
+    2   0.000    0.920    0.080
+    3   0.055    0.084    0.861
+
+
+Logits for the Classification Probabilities for the Most Likely Latent Class Membership (Column)
+by Latent Class (Row)
+
+              1        2        3
+
+    1      2.019   -6.570    0.000
+    2    -10.105    2.448    0.000
+    3     -2.753   -2.329    0.000
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+Latent Class 1
+
+ DOG      BY
+    Q77_1              1.000      0.000    999.000    999.000
+    Q77_2              1.805      0.251      7.182      0.000
+    Q77_3              1.132      0.221      5.128      0.000
+
+ ANTI     BY
+    Q76_1              1.000      0.000    999.000    999.000
+    Q76_2              0.989      0.062     15.955      0.000
+
+ POP      BY
+    Q67_1              1.000      0.000    999.000    999.000
+    Q67_2              1.020      0.044     22.964      0.000
+    Q67_3              1.157      0.048     24.046      0.000
+    Q67_4              0.986      0.048     20.469      0.000
+    Q67_5              0.976      0.057     17.099      0.000
+
+ ANTI     WITH
+    DOG                0.000      0.000    999.000    999.000
+
+ POP      WITH
+    DOG                0.000      0.000    999.000    999.000
+    ANTI               0.000      0.000    999.000    999.000
+
+ Means
+    DOG                0.316      0.072      4.418      0.000
+    ANTI               0.640      0.064     10.043      0.000
+    POP                1.062      0.066     16.089      0.000
+
+ Intercepts
+    Q76_1              0.000      0.000    999.000    999.000
+    Q76_2              0.000      0.000    999.000    999.000
+    Q77_1              0.000      0.000    999.000    999.000
+    Q77_2              0.000      0.000    999.000    999.000
+    Q77_3              0.000      0.000    999.000    999.000
+    Q67_1              0.000      0.000    999.000    999.000
+    Q67_2              0.000      0.000    999.000    999.000
+    Q67_3              0.000      0.000    999.000    999.000
+    Q67_4              0.000      0.000    999.000    999.000
+    Q67_5              0.000      0.000    999.000    999.000
+
+ Variances
+    DOG                0.000      0.000    999.000    999.000
+    ANTI               0.000      0.000    999.000    999.000
+    POP                0.000      0.000    999.000    999.000
+
+ Residual Variances
+    Q76_1              0.832      0.031     26.738      0.000
+    Q76_2              0.823      0.031     26.573      0.000
+    Q77_1              0.957      0.028     33.716      0.000
+    Q77_2              0.889      0.035     25.344      0.000
+    Q77_3              1.004      0.043     23.226      0.000
+    Q67_1              0.548      0.031     17.477      0.000
+    Q67_2              0.541      0.029     18.366      0.000
+    Q67_3              0.428      0.028     15.315      0.000
+    Q67_4              0.556      0.027     20.513      0.000
+    Q67_5              0.600      0.030     19.859      0.000
+
+Latent Class 2
+
+ DOG      BY
+    Q77_1              1.000      0.000    999.000    999.000
+    Q77_2              1.805      0.251      7.182      0.000
+    Q77_3              1.132      0.221      5.128      0.000
+
+ ANTI     BY
+    Q76_1              1.000      0.000    999.000    999.000
+    Q76_2              0.989      0.062     15.955      0.000
+
+ POP      BY
+    Q67_1              1.000      0.000    999.000    999.000
+    Q67_2              1.020      0.044     22.964      0.000
+    Q67_3              1.157      0.048     24.046      0.000
+    Q67_4              0.986      0.048     20.469      0.000
+    Q67_5              0.976      0.057     17.099      0.000
+
+ ANTI     WITH
+    DOG                0.000      0.000    999.000    999.000
+
+ POP      WITH
+    DOG                0.000      0.000    999.000    999.000
+    ANTI               0.000      0.000    999.000    999.000
+
+ Means
+    DOG               -0.189      0.035     -5.426      0.000
+    ANTI              -0.405      0.065     -6.229      0.000
+    POP               -0.688      0.043    -16.158      0.000
+
+ Intercepts
+    Q76_1              0.000      0.000    999.000    999.000
+    Q76_2              0.000      0.000    999.000    999.000
+    Q77_1              0.000      0.000    999.000    999.000
+    Q77_2              0.000      0.000    999.000    999.000
+    Q77_3              0.000      0.000    999.000    999.000
+    Q67_1              0.000      0.000    999.000    999.000
+    Q67_2              0.000      0.000    999.000    999.000
+    Q67_3              0.000      0.000    999.000    999.000
+    Q67_4              0.000      0.000    999.000    999.000
+    Q67_5              0.000      0.000    999.000    999.000
+
+ Variances
+    DOG                0.000      0.000    999.000    999.000
+    ANTI               0.000      0.000    999.000    999.000
+    POP                0.000      0.000    999.000    999.000
+
+ Residual Variances
+    Q76_1              0.832      0.031     26.738      0.000
+    Q76_2              0.823      0.031     26.573      0.000
+    Q77_1              0.957      0.028     33.716      0.000
+    Q77_2              0.889      0.035     25.344      0.000
+    Q77_3              1.004      0.043     23.226      0.000
+    Q67_1              0.548      0.031     17.477      0.000
+    Q67_2              0.541      0.029     18.366      0.000
+    Q67_3              0.428      0.028     15.315      0.000
+    Q67_4              0.556      0.027     20.513      0.000
+    Q67_5              0.600      0.030     19.859      0.000
+
+Latent Class 3
+
+ DOG      BY
+    Q77_1              1.000      0.000    999.000    999.000
+    Q77_2              1.805      0.251      7.182      0.000
+    Q77_3              1.132      0.221      5.128      0.000
+
+ ANTI     BY
+    Q76_1              1.000      0.000    999.000    999.000
+    Q76_2              0.989      0.062     15.955      0.000
+
+ POP      BY
+    Q67_1              1.000      0.000    999.000    999.000
+    Q67_2              1.020      0.044     22.964      0.000
+    Q67_3              1.157      0.048     24.046      0.000
+    Q67_4              0.986      0.048     20.469      0.000
+    Q67_5              0.976      0.057     17.099      0.000
+
+ ANTI     WITH
+    DOG                0.000      0.000    999.000    999.000
+
+ POP      WITH
+    DOG                0.000      0.000    999.000    999.000
+    ANTI               0.000      0.000    999.000    999.000
+
+ Means
+    DOG                0.056      0.038      1.460      0.144
+    ANTI               0.116      0.053      2.200      0.028
+    POP                0.170      0.071      2.404      0.016
+
+ Intercepts
+    Q76_1              0.000      0.000    999.000    999.000
+    Q76_2              0.000      0.000    999.000    999.000
+    Q77_1              0.000      0.000    999.000    999.000
+    Q77_2              0.000      0.000    999.000    999.000
+    Q77_3              0.000      0.000    999.000    999.000
+    Q67_1              0.000      0.000    999.000    999.000
+    Q67_2              0.000      0.000    999.000    999.000
+    Q67_3              0.000      0.000    999.000    999.000
+    Q67_4              0.000      0.000    999.000    999.000
+    Q67_5              0.000      0.000    999.000    999.000
+
+ Variances
+    DOG                0.000      0.000    999.000    999.000
+    ANTI               0.000      0.000    999.000    999.000
+    POP                0.000      0.000    999.000    999.000
+
+ Residual Variances
+    Q76_1              0.832      0.031     26.738      0.000
+    Q76_2              0.823      0.031     26.573      0.000
+    Q77_1              0.957      0.028     33.716      0.000
+    Q77_2              0.889      0.035     25.344      0.000
+    Q77_3              1.004      0.043     23.226      0.000
+    Q67_1              0.548      0.031     17.477      0.000
+    Q67_2              0.541      0.029     18.366      0.000
+    Q67_3              0.428      0.028     15.315      0.000
+    Q67_4              0.556      0.027     20.513      0.000
+    Q67_5              0.600      0.030     19.859      0.000
+
+Categorical Latent Variables
+
+ Means
+    C1#1              -0.561      0.150     -3.747      0.000
+    C1#2              -0.059      0.114     -0.514      0.607
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.791E-03
+       (ratio of smallest to largest eigenvalue)
+
+
+TECHNICAL 11 OUTPUT
+
+     Random Starts Specifications for the k-1 Class Analysis Model
+        Number of initial stage random starts                1000
+        Number of final stage optimizations                   250
+
+
+
+     VUONG-LO-MENDELL-RUBIN LIKELIHOOD RATIO TEST FOR 2 (H0) VERSUS 3 CLASSES
+
+          H0 Loglikelihood Value                       -21323.336
+          2 Times the Loglikelihood Difference            520.257
+          Difference in the Number of Parameters                4
+          Mean                                             33.035
+          Standard Deviation                               65.983
+          P-Value                                          0.0001
+
+     LO-MENDELL-RUBIN ADJUSTED LRT TEST
+
+          Value                                           503.231
+          P-Value                                          0.0001
+
+
+SAVEDATA INFORMATION
+
+
+  Save file
+    data_export_DOG_3_ANTI_POP_VLRT_var_lat=0_covariance=0_residuals=fixed_class
+
+  Order and format of variables
+
+    Q76_1          F10.3
+    Q76_2          F10.3
+    Q77_1          F10.3
+    Q77_2          F10.3
+    Q77_3          F10.3
+    Q67_1          F10.3
+    Q67_2          F10.3
+    Q67_3          F10.3
+    Q67_4          F10.3
+    Q67_5          F10.3
+    W_AGE_BE       F10.3
+    RID            I7
+
+  Save file format
+    11F10.3 I7
+
+  Save file record length    10000
+
+
+     Beginning Time:  22:45:52
+        Ending Time:  22:53:57
+       Elapsed Time:  00:08:05
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2019 Muthen & Muthen

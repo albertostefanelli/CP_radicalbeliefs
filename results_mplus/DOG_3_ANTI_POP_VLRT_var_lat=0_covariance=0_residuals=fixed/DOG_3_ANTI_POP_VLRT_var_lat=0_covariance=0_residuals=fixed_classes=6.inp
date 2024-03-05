@@ -1,0 +1,275 @@
+TITLE:
+DOG_3_ANTI_POP_VLRT_var_lat=0_covariance=0_residuals=fixed_classes=6;
+DATA:
+FILE = "DOG_3_ANTI_POP_VLRT_var_lat=0_covariance=0_residuals=fixed_classes=6.dat";
+ 
+VARIABLE:
+NAMES = rid w_age_bel q76_1 q76_2 q77_1 q77_2 q77_3 q67_1 q67_2 q67_3 q67_4 q67_5; 
+ MISSING=.;
+ USEVARIABLES = rid w_age_bel
+q76_1 q76_2 q77_1 q77_2 q77_3
+q67_1 q67_2 q67_3 q67_4 q67_5
+;
+WEIGHT=w_age_bel;
+IDVARIABLE IS rid;
+                          CLASSES=c1(
+6
+);
+ANALYSIS:
+TYPE = MIXTURE;
+STARTS = 1000 250 0;
+!lrtstarts = 0 0 600 125;
+!LRTBOOTSTRAP = 40;
+STITERATIONS=25;
+             ESTIMATOR = MLR;
+             PROCESSORS = 8;
+MODEL:
+
+%OVERALL%
+!!! dogmatism !!!
+DOG BY Q77_1 q77_2 Q77_3;
+!!! antagonism !!!
+ANTI BY q76_1 q76_2;
+!!! populism !!!
+POP BY Q67_1 Q67_2 Q67_3 Q67_4 Q67_5;
+
+
+
+!!!!!!!!
+%c1#1%
+!!!!!!!!
+
+!!!! Means LV !!!!
+[POP](MPOP1);
+[ANTI](MANTI1);
+[DOG](MDOG1);
+!!!! Variances LV !!!!
+POP@0;
+ANTI@0;
+DOG@0;
+!!!! Covariances LV !!!!
+POP WITH ANTI@0;
+POP WITH DOG@0;
+ANTI WITH DOG@0;
+!!!! Residuals LV !!!!
+Q77_1(VQ77_1);
+Q77_2(VQ77_2);
+Q77_3(VQ77_3);
+Q76_1(VQ76_1);
+Q76_2(VQ76_2);
+Q67_1(VQ67_1);
+Q67_2(VQ67_2);
+Q67_3(VQ67_3);
+Q67_4(VQ67_4);
+Q67_5(VQ67_5);
+!!!! Intercepts manifest !!!!
+[Q77_1@0](intQ77101);
+[Q77_2@0](intQ77201);
+[Q77_3@0](intQ77301);
+[Q76_1@0](intQ76101);
+[Q76_2@0](intQ76201);
+[Q67_1@0](intQ67101);
+[Q67_2@0](intQ67201);
+[Q67_3@0](intQ67301);
+[Q67_4@0](intQ67401);
+[Q67_5@0](intQ67501);
+
+!!!!!!!!
+%c1#2%
+!!!!!!!!
+
+!!!! Means LV !!!!
+[POP](MPOP2);
+[ANTI](MANTI2);
+[DOG](MDOG2);
+!!!! Variances LV !!!!
+POP@0;
+ANTI@0;
+DOG@0;
+!!!! Covariances LV !!!!
+POP WITH ANTI@0;
+POP WITH DOG@0;
+ANTI WITH DOG@0;
+!!!! Residuals LV !!!!
+Q77_1(VQ77_1);
+Q77_2(VQ77_2);
+Q77_3(VQ77_3);
+Q76_1(VQ76_1);
+Q76_2(VQ76_2);
+Q67_1(VQ67_1);
+Q67_2(VQ67_2);
+Q67_3(VQ67_3);
+Q67_4(VQ67_4);
+Q67_5(VQ67_5);
+!!!! Intercepts manifest !!!!
+[Q77_1@0](intQ77102);
+[Q77_2@0](intQ77202);
+[Q77_3@0](intQ77302);
+[Q76_1@0](intQ76102);
+[Q76_2@0](intQ76202);
+[Q67_1@0](intQ67102);
+[Q67_2@0](intQ67202);
+[Q67_3@0](intQ67302);
+[Q67_4@0](intQ67402);
+[Q67_5@0](intQ67502);
+
+!!!!!!!!
+%c1#3%
+!!!!!!!!
+
+!!!! Means LV !!!!
+[POP](MPOP3);
+[ANTI](MANTI3);
+[DOG](MDOG3);
+!!!! Variances LV !!!!
+POP@0;
+ANTI@0;
+DOG@0;
+!!!! Covariances LV !!!!
+POP WITH ANTI@0;
+POP WITH DOG@0;
+ANTI WITH DOG@0;
+!!!! Residuals LV !!!!
+Q77_1(VQ77_1);
+Q77_2(VQ77_2);
+Q77_3(VQ77_3);
+Q76_1(VQ76_1);
+Q76_2(VQ76_2);
+Q67_1(VQ67_1);
+Q67_2(VQ67_2);
+Q67_3(VQ67_3);
+Q67_4(VQ67_4);
+Q67_5(VQ67_5);
+!!!! Intercepts manifest !!!!
+[Q77_1@0](intQ77103);
+[Q77_2@0](intQ77203);
+[Q77_3@0](intQ77303);
+[Q76_1@0](intQ76103);
+[Q76_2@0](intQ76203);
+[Q67_1@0](intQ67103);
+[Q67_2@0](intQ67203);
+[Q67_3@0](intQ67303);
+[Q67_4@0](intQ67403);
+[Q67_5@0](intQ67503);
+
+!!!!!!!!
+%c1#4%
+!!!!!!!!
+
+!!!! Means LV !!!!
+[POP](MPOP4);
+[ANTI](MANTI4);
+[DOG](MDOG4);
+!!!! Variances LV !!!!
+POP@0;
+ANTI@0;
+DOG@0;
+!!!! Covariances LV !!!!
+POP WITH ANTI@0;
+POP WITH DOG@0;
+ANTI WITH DOG@0;
+!!!! Residuals LV !!!!
+Q77_1(VQ77_1);
+Q77_2(VQ77_2);
+Q77_3(VQ77_3);
+Q76_1(VQ76_1);
+Q76_2(VQ76_2);
+Q67_1(VQ67_1);
+Q67_2(VQ67_2);
+Q67_3(VQ67_3);
+Q67_4(VQ67_4);
+Q67_5(VQ67_5);
+!!!! Intercepts manifest !!!!
+[Q77_1@0](intQ77104);
+[Q77_2@0](intQ77204);
+[Q77_3@0](intQ77304);
+[Q76_1@0](intQ76104);
+[Q76_2@0](intQ76204);
+[Q67_1@0](intQ67104);
+[Q67_2@0](intQ67204);
+[Q67_3@0](intQ67304);
+[Q67_4@0](intQ67404);
+[Q67_5@0](intQ67504);
+
+!!!!!!!!
+%c1#5%
+!!!!!!!!
+
+!!!! Means LV !!!!
+[POP](MPOP5);
+[ANTI](MANTI5);
+[DOG](MDOG5);
+!!!! Variances LV !!!!
+POP@0;
+ANTI@0;
+DOG@0;
+!!!! Covariances LV !!!!
+POP WITH ANTI@0;
+POP WITH DOG@0;
+ANTI WITH DOG@0;
+!!!! Residuals LV !!!!
+Q77_1(VQ77_1);
+Q77_2(VQ77_2);
+Q77_3(VQ77_3);
+Q76_1(VQ76_1);
+Q76_2(VQ76_2);
+Q67_1(VQ67_1);
+Q67_2(VQ67_2);
+Q67_3(VQ67_3);
+Q67_4(VQ67_4);
+Q67_5(VQ67_5);
+!!!! Intercepts manifest !!!!
+[Q77_1@0](intQ77105);
+[Q77_2@0](intQ77205);
+[Q77_3@0](intQ77305);
+[Q76_1@0](intQ76105);
+[Q76_2@0](intQ76205);
+[Q67_1@0](intQ67105);
+[Q67_2@0](intQ67205);
+[Q67_3@0](intQ67305);
+[Q67_4@0](intQ67405);
+[Q67_5@0](intQ67505);
+
+!!!!!!!!
+%c1#6%
+!!!!!!!!
+
+!!!! Means LV !!!!
+[POP](MPOP6);
+[ANTI](MANTI6);
+[DOG](MDOG6);
+!!!! Variances LV !!!!
+POP@0;
+ANTI@0;
+DOG@0;
+!!!! Covariances LV !!!!
+POP WITH ANTI@0;
+POP WITH DOG@0;
+ANTI WITH DOG@0;
+!!!! Residuals LV !!!!
+Q77_1(VQ77_1);
+Q77_2(VQ77_2);
+Q77_3(VQ77_3);
+Q76_1(VQ76_1);
+Q76_2(VQ76_2);
+Q67_1(VQ67_1);
+Q67_2(VQ67_2);
+Q67_3(VQ67_3);
+Q67_4(VQ67_4);
+Q67_5(VQ67_5);
+!!!! Intercepts manifest !!!!
+[Q77_1@0](intQ77106);
+[Q77_2@0](intQ77206);
+[Q77_3@0](intQ77306);
+[Q76_1@0](intQ76106);
+[Q76_2@0](intQ76206);
+[Q67_1@0](intQ67106);
+[Q67_2@0](intQ67206);
+[Q67_3@0](intQ67306);
+[Q67_4@0](intQ67406);
+[Q67_5@0](intQ67506);
+OUTPUT:
+TECH11 TECH14;
+SAVEDATA:
+FILE IS data_export_DOG_3_ANTI_POP_VLRT_var_lat=0_covariance=0_residuals=fixed_classes=6.dat; 
+SAVE=fscores CPROB; 
